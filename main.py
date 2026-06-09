@@ -1,0 +1,31 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.core.config import ORIGINS
+from app.database import Base, engine
+from app import db_models
+from app.routers import auth, cart, orders, products, reviews, wishlist
+
+app = FastAPI()
+
+Base.metadata.create_all(bind=engine)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth.router)
+app.include_router(products.router)
+app.include_router(reviews.router)
+app.include_router(wishlist.router)
+app.include_router(cart.router)
+app.include_router(orders.router)
+
+
+@app.get("/")
+def home():
+    return {"message": "Cake shop API is working"}
