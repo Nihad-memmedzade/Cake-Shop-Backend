@@ -206,8 +206,8 @@ Exit SQL Shell:
 Create a `.env` file in the project root:
 
 ```env
-DATABASE_URL=postgresql://cake_house_user:cake_house_password@localhost:5432/cake_house_db
-SECRET_KEY=replace-this-with-a-long-random-secret-key
+DATABASE_URL=postgresql://YOUR_USERNAME:YOUR_PASSWORD@localhost:5432/YOUR_DATABASE_NAME
+SECRET_KEY=YOUR_SECRET_KEY
 ACCESS_TOKEN_EXPIRE_MINUTES=1440
 ORIGINS=http://localhost:5173,http://127.0.0.1:5173
 ```
